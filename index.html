@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurfenix Profile Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #050505;
+            --bg-card: #0D0C09;
+            --border-card: #2A2518;
+            --gold: #D2B260;
+            --gold-muted: #8F815C;
+            --gold-dim: #645A41;
+            --text-paragraph: #7A7565;
+            --text-label: #383427;
+            --badge-bg: #1A160A;
+            --badge-border: #352B14;
+            --badge-dot: #836729;
+            --service-bg: #14120D;
+            --service-border: #242016;
+            --service-dot: #B92B2B;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .page-title {
+            color: var(--gold-dim);
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Bottom Gradient Border */
+        .card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #A82525 0%, #DCAE40 50%, #A82525 100%);
+        }
+
+        .top-section {
+            padding: 48px;
+        }
+
+        .company-info {
+            max-width: 600px;
+        }
+
+        .est-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .est-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--badge-dot);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .company-name {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin: 0 0 12px 0;
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: var(--gold-muted);
+            letter-spacing: 3px;
+            font-weight: 500;
+            margin: 0 0 24px 0;
+        }
+
+        .company-desc {
+            font-size: 13.5px;
+            color: var(--text-paragraph);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .middle-section {
+            display: flex;
+            border-top: 1px solid var(--border-card);
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .person-card {
+            flex: 1;
+            padding: 32px 48px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .person-card:first-child {
+            border-right: 1px solid var(--border-card);
+        }
+
+        .person-name {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 0 0 6px 0;
+            letter-spacing: 1px;
+        }
+
+        .person-role {
+            font-size: 11px;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin: 0 0 32px 0;
+        }
+
+        .info-row {
+            margin-bottom: 16px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 9px;
+            color: #554D3D;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-size: 13px;
+            color: var(--gold-muted);
+            font-weight: 500;
+        }
+
+        .info-value.empty {
+            color: #554D3D;
+        }
+
+        .bottom-section {
+            padding: 36px 48px 48px 48px;
+        }
+
+        .services-label {
+            font-size: 11px;
+            color: #554D3D;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 60px;
+        }
+
+        .service-item {
+            background-color: var(--service-bg);
+            border: 1px solid var(--service-border);
+            border-radius: 6px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: var(--gold-muted);
+            font-weight: 500;
+        }
+
+        .service-item::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background-color: var(--service-dot);
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 10.5px;
+            color: #554D3D;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .footer-right {
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-title">Company Profile</div>
+
+        <div class="card">
+            <!-- Top Section -->
+            <div class="top-section">
+                <div class="company-info">
+                    <div class="est-badge">EST. 21 APRIL 2026</div>
+                    <h1 class="company-name">AURFENIX</h1>
+                    <h2 class="company-tagline">ANALYZE · ACQUIRE · AMAZE</h2>
+                    <p class="company-desc">
+                        We build intelligent software solutions — from custom websites and web applications to
+                        ML-integrated platforms that enable data analysis, prediction, and workflow automation for
+                        modern businesses.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Middle Section -->
+            <div class="middle-section">
+                <div class="person-card">
+                    <h3 class="person-name">DEVANAND S K</h3>
+                    <div class="person-role">FOUNDER & CEO</div>
+
+                    <div class="info-row">
+                        <div class="info-label">PHONE</div>
+                        <div class="info-value">+91 79044 06778</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">EMAIL</div>
+                        <div class="info-value">aurfenix private limited</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">EMPLOYEE ID</div>
+                        <div class="info-value">AX-5001</div>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <h3 class="person-name">KAMALESH S</h3>
+                    <div class="person-role">CO-FOUNDER & CTO</div>
+
+                    <div class="info-row">
+                        <div class="info-label">PHONE</div>
+                        <div class="info-value empty">—</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">EMAIL</div>
+                        <div class="info-value">aurfenix private limited</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">EMPLOYEE ID</div>
+                        <div class="info-value">AX-5002</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <h4 class="services-label">OUR SERVICES</h4>
+
+                <div class="services-grid">
+                    <div class="service-item">Custom Websites</div>
+                    <div class="service-item">Web Applications</div>
+                    <div class="service-item">ML-Integrated Platforms</div>
+                    <div class="service-item">Data Analysis & Prediction</div>
+                    <div class="service-item">Workflow Automation</div>
+                    <div class="service-item">AI-Powered Solutions</div>
+                </div>
+
+                <div class="footer">
+                    <div class="footer-left">
+                        7A, Poosari Thootam, Soolai<br>
+                        Erode - 638004, Tamil Nadu, India
+                    </div>
+                    <div class="footer-right">
+                        INCORPORATED<br>
+                        21 APRIL 2026<br>
+                        CIN NO. PENDING
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
